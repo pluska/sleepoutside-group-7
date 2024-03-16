@@ -1,7 +1,8 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
+  <span class="cart-card__close" data-id="${item.Id}">❌</span>
   <a href="#" class="cart-card__image">
     <img
       src="${item.Image}"
@@ -23,6 +24,13 @@ export default class Cart {
   constructor(key, parentSelector) {
     this.key = key;
     this.parentSelector = parentSelector;
+  }
+
+  removeFromCart(id) {
+    const cartItems = getLocalStorage(this.key);
+    const newCartItems = cartItems.filter((item) => item.Id !== id);
+    setLocalStorage(this.key, newCartItems);
+    this.renderCartContents();
   }
 
   renderCartContents() {

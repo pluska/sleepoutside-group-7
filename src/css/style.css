@@ -224,6 +224,19 @@ button {
   grid-column: 3;
 }
 
+.cart-card__close {
+  grid-row: 1;
+  grid-column: 4;
+  justify-self: end;
+  cursor: pointer;
+  margin: 0.5em;
+  padding: 0.5em;
+  border-radius: 5px;
+}
+.cart-card__close:hover {
+  border: 1px solid var(--dark-grey);
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -234,7 +247,11 @@ button {
   }
   .cart-card {
     font-size: inherit;
-    grid-template-columns: 150px auto 15%;
+    grid-template-columns: 150px auto 15% 10px;
+  }
+  .cart-card__close {
+    grid-row: 1;
+    grid-column: 4;
   }
 }
 
