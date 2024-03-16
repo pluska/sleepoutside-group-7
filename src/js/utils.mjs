@@ -36,3 +36,19 @@ export const renderListWithTemplate = (templateFn, parentElement, list, position
   }
   parentElement.insertAdjacentHTML(position, html.join(""));
 }
+
+export const renderWithTemplate = (template, parentElement, data, callback) => {
+  parentElement.insertAdjacentHTML("afterbegin", template);
+  if (callback) {
+    callback(data);
+  }
+}
+
+export const loadTemplate = async (path) => await fetch(path).then((res) => res.text());
+
+export const loadHeaderFooter = async () => {
+  const header = await loadTemplate("/partials/header.html");
+  const footer = await loadTemplate("/partials/footer.html");
+  renderWithTemplate(header, document.getElementById("header"));
+  renderWithTemplate(footer, document.getElementById("footer"));
+}
