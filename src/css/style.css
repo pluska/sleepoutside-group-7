@@ -122,6 +122,28 @@ button {
 .products {
   padding: 0.5em;
 }
+.product-categories {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0;
+}
+
+.product-categories li {
+  width: 100px;
+  height: 100px;
+  padding: 0.5em;
+  text-align: center;
+}
+
+.product-categories li:hover {
+  opacity: 0.5;
+  border: 1px solid var(--dark-grey);
+  border-radius: 5px;
+}
+
 .product-list {
   display: flex;
   flex-flow: row wrap;
