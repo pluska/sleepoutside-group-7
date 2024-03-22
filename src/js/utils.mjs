@@ -44,7 +44,15 @@ export const renderWithTemplate = (template, parentElement, data, callback) => {
   }
 }
 
-export const loadTemplate = async (path) => await fetch(path).then((res) => res.text());
+export const loadTemplate = async (path) => await fetch(path, {
+  method: "GET",
+  headers: {
+    "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
+        "Access-Control-Allow-Credentials": true,
+  },
+}).then((res) => res.text());
 
 export const loadHeaderFooter = async () => {
   const header = await loadTemplate("/partials/header.html");

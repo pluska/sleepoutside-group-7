@@ -12,12 +12,32 @@ export default class ProductData {
   constructor() {
   }
   async getData(category) {
-    return await fetch(`${baseURL}products/search/${category}`)
+    return await fetch(`${baseURL}products/search/${category}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
+        "Access-Control-Allow-Credentials": true,
+      },
+    })
       .then(convertToJson)
       .then((data) => data.Result);
   }
   async findProductById(id) {
-    return await fetch(`${baseURL}product/${id}`)
+    return await fetch(`${baseURL}product/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
+        "Access-Control-Allow-Credentials": true,
+      },
+    })
     .then(convertToJson)
     .then((data) => data.Result);
   }
