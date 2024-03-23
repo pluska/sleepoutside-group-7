@@ -33,11 +33,22 @@ export default class Cart {
     this.renderCartContents();
   }
 
+  calculateTotal() {
+    const cartItems = getLocalStorage(this.key);
+    let total = 0;
+    cartItems.forEach((item) => (total += item.FinalPrice));
+    return total;
+  }
+
   renderCartContents() {
     const cartItems = getLocalStorage("so-cart");
-    if(!cartItems) {
+    if(cartItems.length === 0) {
+      document.querySelector(".cart-footer").classList.add("hide");
       return document.querySelector(this.parentSelector).innerHTML = "<p>Your Cart is empty</p>";
+    } else {
+      document.querySelector(".cart-footer").classList.remove("hide");
     }
+    document.querySelector(".cart-total").textContent += `$${this.calculateTotal()}`
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
   }
