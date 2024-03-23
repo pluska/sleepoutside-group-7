@@ -237,6 +237,22 @@ button {
   border: 1px solid var(--dark-grey);
 }
 
+.cart-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.cart-total {
+  margin-right: 1em;
+  font-size: var(--large-font);
+  font-weight: bold;
+}
+
+.hide {
+  display: none;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
