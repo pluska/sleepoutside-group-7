@@ -8,7 +8,7 @@ function convertToJson(res) {
   }
 }
 
-export default class ProductData {
+export default class ExternalServices {
   constructor() {
   }
   async getData(category) {
@@ -41,4 +41,21 @@ export default class ProductData {
     .then(convertToJson)
     .then((data) => data.Result);
   }
+
+  async checkout(payload) {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token",
+        "Access-Control-Allow-Credentials": true,
+      },
+      body: JSON.stringify(payload),
+    };
+    return await fetch(baseURL + "checkout/", options).then(convertToJson);
+  }
+
 }
